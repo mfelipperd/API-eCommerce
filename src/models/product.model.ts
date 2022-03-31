@@ -17,7 +17,7 @@ export default class ProductsModel {
 
   public async getProductById(id: number): Promise<Product[]> {
     const [product] = await this.connection
-      .execute<RowDataPacket []>('SELECT id FROM Trybesmith.Products WHERE ID = ?', [id]);
+      .execute<RowDataPacket []>('SELECT id FROM Trybesmith.Products WHERE orderId = ?', [id]);
     return product as Product[];
   }
 
