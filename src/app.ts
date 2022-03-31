@@ -4,16 +4,18 @@ import { amountValidation, nameValidation } from './schemas/product.schemas';
 import { levelValidation, 
   usernameValidation, classeValidation, passwordValidation } from './schemas/user.schemas';
 import UserController from './controller/user.controller';
+import OrderController from './controller/order.controller';
 
 const app = express();
 const productController = new ProductController();
 const userController = new UserController();
+const orderController = new OrderController();
 
 app.use(express.json());
 
 app.get('/products', productController.getAllProdutcts);
 app.post('/products', nameValidation, amountValidation, productController.createProduct);
-app.get('/orders');
+app.get('/orders', orderController.getAllOrders);
 app.post(
   '/users', 
   usernameValidation, 
