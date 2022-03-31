@@ -14,7 +14,7 @@ export default class UserService {
     return Users;
   }
 
-  public createUser(user: User): Promise<User> {
+  public createUser(user: Omit<User, 'id'>): Promise<Omit<User, 'id'>> {
     return this.model.createUser(user);
   }
 }

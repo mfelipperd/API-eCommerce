@@ -15,7 +15,8 @@ export default class UserModel {
     return rows as User[];
   }
 
-  public async createUser(user: User):Promise<User> {
+  public async createUser(user: Omit<User, 'id'>):
+  Promise<Omit<User, 'id'>> {
     const { username, classe, level, password } = user;
     await this.connection.execute<ResultSetHeader>(
       'INSERT INTO Trybesmith.Users (username, classe, level, password) VALUES (?,?,?,?)', 
